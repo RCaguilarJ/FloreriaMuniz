@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 
 const locations = [
-  { id: 'union', name: 'Union Square', address: '14th St & Broadway', status: '14 disponible' },
-  { id: 'chelsea', name: 'Chelsea Market', address: '9th Ave & 15th St', status: '8 disponible' },
-  { id: 'flatiron', name: 'Flatiron', address: '23rd St & 5th Ave', status: '11 disponible' },
-  { id: 'williamsburg', name: 'Williamsburg', address: 'Bedford Ave & N 7th', status: '6 disponible' },
+  { id: 'patria', name: 'Av. Patria', address: 'Ameca Jalisco' },
+  { id: 'principal', name: 'Av. Principal', address: 'San Martín de Hidalgo' },
 ];
 
 export default function UnlockSection() {
-  const [selectedLocation, setSelectedLocation] = useState('union');
+  const [selectedLocation, setSelectedLocation] = useState('patria');
   const [phone, setPhone] = useState('');
   const [note, setNote] = useState('');
   const [submitted, setSubmitted] = useState(false);
@@ -26,8 +24,7 @@ export default function UnlockSection() {
           <div className="reveal">
             <p className="text-[10px] font-bold tracking-[0.3em] uppercase text-bloom-pink mb-4">LISTO CUANDO TÚ LO ESTÉS</p>
             <h2 className="font-fraunces text-[clamp(2.5rem,5vw,4.5rem)] leading-[1.1] text-bloom-ink mb-8">
-              Abre el <br />
-              <span className="italic font-light opacity-80">enfriador.</span>
+              Haz tu pedido
             </h2>
             <p className="text-lg text-bloom-ink-muted max-w-md leading-relaxed mb-10">
               Elige tu ubicación, ingresa tu número y te enviaremos un código de desbloqueo. Tu ramo te espera por 90 minutos — sin prisas, sin mostrador, sin charlas triviales.
@@ -76,8 +73,7 @@ export default function UnlockSection() {
                             </div>
                           )}
                         </div>
-                        <p className="text-[11px] text-bloom-ink-muted mb-2">{loc.address}</p>
-                        <p className="text-[10px] font-bold text-bloom-ink-muted uppercase tracking-wider">{loc.status}</p>
+                        <p className="text-[11px] text-bloom-ink-muted">{loc.address}</p>
                       </button>
                     ))}
                   </div>

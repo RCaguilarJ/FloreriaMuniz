@@ -28,16 +28,16 @@ export default function Header() {
         />
 
         <nav className="hidden md:flex items-center gap-8">
-          <a href="#catalog" className="text-[13px] font-medium text-bloom-ink-muted hover:text-bloom-ink transition-colors">
+          <a href="#catalog" className="text-[13px] font-medium text-black hover:text-black transition-colors">
             Catálogo
           </a>
-          <a href="#how-it-works" className="text-[13px] font-medium text-bloom-ink-muted hover:text-bloom-ink transition-colors">
+          <a href="#how-it-works" className="text-[13px] font-medium text-black hover:text-black transition-colors">
             Cómo Funciona
           </a>
-          <a href="#delivery" className="text-[13px] font-medium text-bloom-ink-muted hover:text-bloom-ink transition-colors">
+          <a href="#delivery" className="text-[13px] font-medium text-black hover:text-black transition-colors">
             Envíos
           </a>
-          <a href="#story" className="text-[13px] font-medium text-bloom-ink-muted hover:text-bloom-ink transition-colors">
+          <a href="#story" className="text-[13px] font-medium text-black hover:text-black transition-colors">
             Historia
           </a>
         </nav>
