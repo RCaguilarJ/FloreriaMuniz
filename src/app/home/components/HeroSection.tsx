@@ -39,7 +39,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section ref={heroRef} id="hero" className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden bg-bloom-linen">
+    <section ref={heroRef} id="hero" className="hero-section relative min-h-screen flex flex-col justify-center items-center overflow-hidden bg-bloom-linen">
       
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
@@ -70,11 +70,11 @@ export default function HeroSection() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
+      <div className="hero-section__content relative z-10 text-center px-6 max-w-5xl mx-auto">
         <div className="reveal mb-8">
-          <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 mb-10">
+          <div className="hero-section__badge inline-flex items-center gap-3 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 mb-10">
             <span className="w-2 h-2 rounded-full bg-bloom-green animate-pulse" />
-            <span className="text-[11px] font-semibold tracking-[0.2em] uppercase text-white">14 ARREGLOS FRESCOS - ENFRIADOR #3, UNION SQUARE</span>
+            <span className="hero-section__badge-copy text-[11px] font-semibold tracking-[0.2em] uppercase text-white">14 ARREGLOS FRESCOS - ENFRIADOR #3, UNION SQUARE</span>
           </div>
           
           <h1 className="font-fraunces text-[clamp(3.5rem,8vw,7rem)] leading-[1] text-white tracking-tight mb-8">
@@ -83,25 +83,25 @@ export default function HeroSection() {
           </h1>
           
           <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed mb-12 font-sans">
-            Un enfriador desbloqueado por teléfono con ramos atados a mano. Reserva el tuyo, obtén el código, recógelo en cualquier momento.
+            Mucho menos límites de distancia. Reserva el tuyo de cualquier lugar del mundo. Obtén el código, recógelo en cualquier momento.
           </p>
 
           {/* Countdown */}
-          <div className="mb-12 flex flex-col items-center gap-4">
+          <div className="hero-section__countdown mb-12 flex flex-col items-center gap-4">
             <p className="text-[11px] font-semibold tracking-[0.25em] uppercase text-white/60">PRÓXIMA ENTREGA EN</p>
-            <div className="flex items-center gap-8">
+            <div className="hero-section__countdown-values">
               <div className="text-center">
-                <p className="text-5xl font-fraunces text-white mb-1">{String(timeLeft.hours).padStart(2, '0')}</p>
+                <p className="hero-section__countdown-number text-5xl font-fraunces text-white mb-1">{String(timeLeft.hours).padStart(2, '0')}</p>
                 <p className="text-[10px] font-semibold tracking-widest uppercase text-white/40">Hrs</p>
               </div>
-              <span className="text-3xl font-fraunces text-white/20">:</span>
+              <span className="hero-section__countdown-divider text-3xl font-fraunces text-white/20">:</span>
               <div className="text-center">
-                <p className="text-5xl font-fraunces text-white mb-1">{String(timeLeft.minutes).padStart(2, '0')}</p>
+                <p className="hero-section__countdown-number text-5xl font-fraunces text-white mb-1">{String(timeLeft.minutes).padStart(2, '0')}</p>
                 <p className="text-[10px] font-semibold tracking-widest uppercase text-white/40">Min</p>
               </div>
-              <span className="text-3xl font-fraunces text-white/20">:</span>
+              <span className="hero-section__countdown-divider text-3xl font-fraunces text-white/20">:</span>
               <div className="text-center">
-                <p className="text-5xl font-fraunces text-white mb-1">{String(timeLeft.seconds).padStart(2, '0')}</p>
+                <p className="hero-section__countdown-number text-5xl font-fraunces text-white mb-1">{String(timeLeft.seconds).padStart(2, '0')}</p>
                 <p className="text-[10px] font-semibold tracking-widest uppercase text-white/40">Seg</p>
               </div>
             </div>
@@ -119,7 +119,7 @@ export default function HeroSection() {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 opacity-50">
+      <div className="hero-section__scroll absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 opacity-50">
         <span className="text-[10px] font-semibold tracking-[0.3em] uppercase text-white">DESLIZAR PARA ABRIR</span>
         <div className="w-px h-12 bg-gradient-to-b from-white to-transparent" />
       </div>

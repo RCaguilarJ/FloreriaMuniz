@@ -17,9 +17,9 @@ export default function UnlockSection() {
   };
 
   return (
-    <section id="unlock" className="py-24 px-6 md:px-12 lg:px-20 bg-bloom-linen border-t border-bloom-border">
+    <section id="unlock" className="unlock-section py-24 px-6 md:px-12 lg:px-20 bg-bloom-linen border-t border-bloom-border">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        <div className="unlock-section__grid grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           {/* Left side: Info */}
           <div className="reveal">
             <p className="text-[10px] font-bold tracking-[0.3em] uppercase text-bloom-pink mb-4">LISTO CUANDO TÚ LO ESTÉS</p>
@@ -46,7 +46,7 @@ export default function UnlockSection() {
           </div>
 
           {/* Right side: Form */}
-          <div className="reveal reveal-delay-1 bg-white p-8 md:p-12 rounded-sm border border-bloom-border shadow-2xl">
+          <div className="unlock-section__panel reveal reveal-delay-1 bg-white p-8 md:p-12 rounded-sm border border-bloom-border shadow-2xl">
             {!submitted ? (
               <form onSubmit={handleSubmit} className="space-y-8">
                 <div>
@@ -108,7 +108,7 @@ export default function UnlockSection() {
                   />
                 </div>
 
-                <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <div className="unlock-section__actions flex flex-col sm:flex-row gap-4 pt-4">
                   <button
                     type="submit"
                     className="flex-1 px-8 py-5 bg-bloom-green text-white text-[14px] font-bold tracking-widest uppercase rounded-sm transition-all duration-300 hover:bg-bloom-green-dark hover:-translate-y-1 active:scale-95 shadow-xl flex items-center justify-center gap-3"

@@ -1,1 +1,244 @@
 @import './tailwind.css';
+
+html {
+  scroll-behavior: smooth;
+}
+
+body.menu-open {
+  overflow: hidden;
+}
+
+.site-main {
+  overflow-x: hidden;
+}
+
+.site-header {
+  --header-surface: rgba(255, 251, 247, 0.96);
+}
+
+.site-header__inner {
+  position: relative;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+}
+
+.site-nav__panel {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.site-nav__toggle {
+  display: none;
+  width: 3rem;
+  height: 3rem;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.32rem;
+  border: 1px solid rgba(42, 33, 28, 0.14);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  color: #111111;
+  backdrop-filter: blur(16px);
+  transition: transform 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+}
+
+.site-nav__toggle:hover {
+  transform: translateY(-1px);
+  border-color: rgba(42, 33, 28, 0.24);
+  background: rgba(255, 255, 255, 0.88);
+}
+
+.site-nav__toggle-line {
+  width: 1.1rem;
+  height: 1.5px;
+  border-radius: 999px;
+  background: currentColor;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.site-nav__toggle.is-open .site-nav__toggle-line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.site-nav__toggle.is-open .site-nav__toggle-line:nth-child(2) {
+  opacity: 0;
+}
+
+.site-nav__toggle.is-open .site-nav__toggle-line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.hero-section__content {
+  padding-top: 7rem;
+  padding-bottom: 4rem;
+}
+
+.hero-section__countdown-values {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.site-footer__nav,
+.site-footer__meta {
+  flex-wrap: wrap;
+}
+
+@media (max-width: 1023px) {
+  .hero-section__content {
+    max-width: 42rem;
+  }
+
+  .unlock-section__grid {
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .site-header {
+    background: rgba(255, 251, 247, 0.86);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(42, 33, 28, 0.08);
+  }
+
+  .site-header__inner {
+    min-height: 4.5rem;
+    padding-inline: 1rem;
+  }
+
+  .site-nav {
+    margin-left: auto;
+  }
+
+  .site-nav__toggle {
+    display: inline-flex;
+  }
+
+  .site-nav__panel {
+    position: absolute;
+    top: calc(100% + 0.75rem);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 0.65rem 1.25rem;
+    background: var(--header-surface);
+    border: 1px solid rgba(42, 33, 28, 0.1);
+    border-radius: 1rem;
+    box-shadow: 0 22px 50px rgba(38, 27, 24, 0.12);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease;
+  }
+
+  .site-nav__panel.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .site-nav__link {
+    display: block;
+    width: 100%;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid rgba(42, 33, 28, 0.08);
+  }
+
+  .site-nav__link:last-child {
+    border-bottom: 0;
+  }
+
+  .hero-section {
+    min-height: auto;
+    padding-top: 4.5rem;
+  }
+
+  .hero-section__content {
+    padding-top: 4rem;
+    padding-bottom: 5rem;
+    padding-inline: 1.25rem;
+  }
+
+  .hero-section__badge {
+    width: min(100%, 22rem);
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+
+  .hero-section__badge-copy {
+    font-size: 0.64rem;
+    letter-spacing: 0.18em;
+    line-height: 1.45;
+    text-align: left;
+  }
+
+  .hero-section__countdown {
+    gap: 1rem;
+  }
+
+  .hero-section__countdown-values {
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .hero-section__countdown-number {
+    font-size: 2.8rem;
+  }
+
+  .hero-section__scroll {
+    display: none;
+  }
+
+  .unlock-section {
+    padding-inline: 1rem;
+    padding-top: 4.5rem;
+    padding-bottom: 4.5rem;
+  }
+
+  .unlock-section__panel {
+    padding: 1.5rem;
+  }
+
+  .unlock-section__actions {
+    flex-direction: column;
+  }
+
+  .site-footer {
+    padding-block: 2.5rem;
+  }
+
+  .site-footer__brand,
+  .site-footer__meta,
+  .site-footer__nav {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 479px) {
+  .hero-section__content {
+    padding-inline: 1rem;
+  }
+
+  .hero-section__countdown-values {
+    gap: 0.75rem;
+  }
+
+  .hero-section__countdown-number {
+    font-size: 2.2rem;
+  }
+
+  .hero-section__countdown-divider {
+    display: none;
+  }
+}

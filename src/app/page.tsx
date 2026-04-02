@@ -13,7 +13,7 @@ import WhatsAppButton from '../components/ui/WhatsAppButton';
 
 export default function Page() {
   return (
-    <main className="min-h-screen bg-bloom-linen selection:bg-bloom-pink selection:text-white">
+    <main className="site-main min-h-screen bg-bloom-linen selection:bg-bloom-pink selection:text-white">
       <Header />
       <HeroSection />
       <MarqueeSection />

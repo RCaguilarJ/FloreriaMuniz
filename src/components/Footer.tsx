@@ -3,13 +3,13 @@ import AppLogo from '@/src/components/ui/AppLogo';
 
 export default function Footer() {
   return (
-    <footer className="border-t border-bloom-border bg-bloom-linen py-8">
+    <footer className="site-footer border-t border-bloom-border bg-bloom-linen py-8">
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Left: Logo + links */}
-          <div className="flex items-center gap-8">
+          <div className="site-footer__brand flex items-center gap-8">
             <AppLogo text="Florería Muñiz" size={22} className="text-bloom-ink" src="" />
-            <nav className="flex items-center gap-6">
+            <nav className="site-footer__nav flex items-center gap-6">
               <a href="#catalog" className="text-[14px] font-medium text-bloom-ink-muted hover:text-bloom-ink transition-colors">Catálogo</a>
               <a href="#how-it-works" className="text-[14px] font-medium text-bloom-ink-muted hover:text-bloom-ink transition-colors">Cómo Funciona</a>
               <a href="#delivery" className="text-[14px] font-medium text-bloom-ink-muted hover:text-bloom-ink transition-colors">Envíos</a>
@@ -18,7 +18,7 @@ export default function Footer() {
           </div>
 
           {/* Right: Social + legal */}
-          <div className="flex items-center gap-6">
+          <div className="site-footer__meta flex items-center gap-6">
             <div className="flex items-center gap-4">
               <a href="#" aria-label="Instagram" className="text-bloom-ink-muted hover:text-bloom-green transition-colors">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
