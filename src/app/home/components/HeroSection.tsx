@@ -1,6 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react';
 import AppImage from '../../../components/ui/AppImage';
 
+const images = import.meta.glob('/src/assets/images/*.{jpg,jpeg,png,webp}', {
+  eager: true,
+  query: { preset: 'url' }
+});
+
+const getImageUrl = (filename: string) => {
+  const key = Object.keys(images).find((k) => k.includes(filename));
+  return key ? (images[key] as any).default : '';
+};
+
 export default function HeroSection() {
   const [timeLeft, setTimeLeft] = useState({ hours: 0, minutes: 0, seconds: 0 });
   const heroRef = useRef<HTMLDivElement>(null);
@@ -44,7 +54,7 @@ export default function HeroSection() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <AppImage 
-          src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9" 
+          src={getImageUrl('beautiful-bouquet-roses')} 
           alt="Flores frescas en el enfriador"
           fill
           className="object-cover animate-dolly scale-[1.03] brightness-[0.3] contrast-[0.9] saturate-[0.72]"

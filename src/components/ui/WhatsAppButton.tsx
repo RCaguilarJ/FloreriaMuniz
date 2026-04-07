@@ -3,7 +3,7 @@
 import React from 'react';
 
 export default function WhatsAppButton() {
-  const whatsappUrl = "https://api.whatsapp.com/send?phone=3757561827&text=Hola%2C%20vi%20tu%20publicidad%20en%20Facebook%2C%20quisiera%20hacerte%20un%20pedido";
+  const whatsappUrl = "https://api.whatsapp.com/send?phone=3751111294&text=Hola%2C%20vi%20tu%20publicidad%20en%20Facebook%2C%20quisiera%20hacerte%20un%20pedido";
 
   return (
     <a

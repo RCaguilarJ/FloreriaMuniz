@@ -1,7 +1,9 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import { ShoppingBag } from 'lucide-react';
 import AppLogo from '@/src/components/ui/AppLogo';
+import { useCart } from '@/src/contexts/CartContext';
 
 const navItems = [
   { href: '#catalog', label: 'Catálogo' },
@@ -13,6 +15,7 @@ const navItems = [
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { itemCount, setIsOpen } = useCart();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
@@ -86,6 +89,17 @@ export default function Header() {
                 {item.label}
               </a>
             ))}
+            <button
+              onClick={() => setIsOpen(true)}
+              className="site-nav__link text-[13px] font-medium text-black hover:text-black transition-colors flex items-center gap-2"
+              >
+              <ShoppingBag className="w-4 h-4" />
+              {itemCount > 0 && (
+                <span className="bg-bloom-pink text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center">
+                  {itemCount}
+                </span>
+              )}
+            </button>
           </div>
         </nav>
       </div>

@@ -2,15 +2,18 @@
 
 import React, { useState } from 'react';
 import AppImage from '@/src/components/ui/AppImage';
+import { useCart, Product } from '@/src/contexts/CartContext';
+import { get } from 'http';
 
-interface Product {
-  id: string;
-  name: string;
-  description: string;
-  price: number;
-  image: string;
-  category: string;
-}
+const images = import.meta.glob('/src/assets/images/*.{jpg,jpeg,png,webp}', {
+  eager: true,
+  query: { preset: 'url' }
+});
+
+const getImageUrl = (filename: string) => {
+  const key = Object.keys(images).find((k) => k.includes(filename));
+  return key ? (images[key] as any).default : '';
+};
 
 const products: Product[] = [
   // Ramos de Rosas
@@ -19,15 +22,15 @@ const products: Product[] = [
     name: 'Pasión Escarlata',
     description: '12 rosas rojas de tallo largo con follaje premium.',
     price: 45,
-    image: 'https://images.unsplash.com/photo-1548610762-7c6abc94c031',
+    image: getImageUrl('valentines-day-womens-mothers-day-red-rose-with-ribbon-heart-gift-surprise'),
     category: 'Ramos de Rosas'
   },
   {
     id: 'r2',
-    name: 'Amanecer Rosa',
-    description: 'Mezcla de rosas en tonos pastel y eucalipto.',
+    name: 'Despertar Escarlata',
+    description: 'Mezcla de rosas en tonos elegantes y cálidos.',
     price: 38,
-    image: 'https://images.unsplash.com/photo-1596073413225-307ddbd35945',
+    image: getImageUrl('composition-red-flowers-near-ribbon'),
     category: 'Ramos de Rosas'
   },
   {
@@ -35,16 +38,16 @@ const products: Product[] = [
     name: 'Elegancia Blanca',
     description: 'Rosas blancas puras simbolizando paz y pureza.',
     price: 42,
-    image: 'https://images.unsplash.com/photo-1525310238806-e156c2702b00',
+    image: getImageUrl('beautiful-spring-flowers'),
     category: 'Ramos de Rosas'
   },
   // Arreglos Exóticos
   {
     id: 'e1',
     name: 'Paraíso Tropical',
-    description: 'Aves del paraíso, anturios y orquídeas exóticas.',
+    description: 'orquídeas y flores exóticas.',
     price: 65,
-    image: 'https://images.unsplash.com/photo-1567606117528-5ffe2d961634',
+    image: getImageUrl('burgundy-orange-lillian-bouquet-with-roses-dark-background'),
     category: 'Arreglos Exóticos'
   },
   {
@@ -52,15 +55,15 @@ const products: Product[] = [
     name: 'Orquídea Zen',
     description: 'Orquídea Phalaenopsis en base de cerámica minimalista.',
     price: 55,
-    image: 'https://images.unsplash.com/photo-1534885322321-4feb4a782fc2',
+    image:getImageUrl('vertical-selective-focus-shot-red-anthurium-flowers'),
     category: 'Arreglos Exóticos'
   },
   {
     id: 'e3',
-    name: 'Selva Vibrante',
+    name: 'Amanecer Rosa',
     description: 'Composición de flores tropicales de colores intensos.',
     price: 70,
-    image: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23',
+    image: getImageUrl('vertical-selective-focus-shot-red-anthurium-flowers'),
     category: 'Arreglos Exóticos'
   },
   // Plantas de Interior
@@ -77,48 +80,16 @@ const products: Product[] = [
     name: 'Ficus Lyrata',
     description: 'Árbol de interior con hojas en forma de violín.',
     price: 48,
-    image: 'https://images.unsplash.com/photo-1597055181300-e3633a207518',
+    image: getImageUrl('vertical-shot-indoor-fiddle-leaf-fig-plant-white-pot'),
     category: 'Plantas de Interior'
-  },
-  {
-    id: 'p3',
-    name: 'Sansevieria',
-    description: 'Planta resistente que purifica el aire, fácil cuidado.',
-    price: 25,
-    image: 'https://images.unsplash.com/photo-1593482892290-f54927ae1bac',
-    category: 'Plantas de Interior'
-  },
-  // Ocasiones Especiales
-  {
-    id: 's1',
-    name: 'Caja de Amor',
-    description: 'Rosas y chocolates en una caja de lujo.',
-    price: 85,
-    image: 'https://images.unsplash.com/photo-1518199266791-5375a83190b7',
-    category: 'Ocasiones Especiales'
-  },
-  {
-    id: 's2',
-    name: 'Celebración Dorada',
-    description: 'Arreglo festivo con toques dorados y champán.',
-    price: 95,
-    image: 'https://images.unsplash.com/photo-1513151233558-d860c5398176',
-    category: 'Ocasiones Especiales'
-  },
-  {
-    id: 's3',
-    name: 'Nacimiento Dulce',
-    description: 'Flores suaves acompañadas de un peluche premium.',
-    price: 60,
-    image: 'https://images.unsplash.com/photo-1522673607200-1648482ce486',
-    category: 'Ocasiones Especiales'
   }
+
 ];
 
-const categories = ['Todos', 'Ramos de Rosas', 'Arreglos Exóticos', 'Plantas de Interior', 'Ocasiones Especiales'];
 
 export default function CatalogSection() {
   const [activeCategory, setActiveCategory] = useState('Todos');
+  const { addItem } = useCart();
 
   const filteredProducts = activeCategory === 'Todos' 
     ? products 
@@ -134,22 +105,6 @@ export default function CatalogSection() {
           </h2>
         </div>
 
-        {/* Category Filter */}
-        <div className="reveal flex flex-wrap justify-center gap-4 mb-12">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`px-6 py-2 rounded-full text-[12px] font-bold tracking-widest uppercase transition-all duration-300 ${
-                activeCategory === cat 
-                  ? 'bg-bloom-ink text-white' 
-                  : 'bg-bloom-linen text-bloom-ink-muted hover:bg-bloom-fog'
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
 
         {/* Product Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
@@ -172,7 +127,10 @@ export default function CatalogSection() {
               </div>
               <h3 className="font-fraunces text-xl text-bloom-ink mb-1 italic">{product.name}</h3>
               <p className="text-[12px] text-bloom-ink-muted leading-relaxed mb-4 flex-grow">{product.description}</p>
-              <button className="w-full py-3 border border-bloom-ink text-bloom-ink text-[11px] font-bold tracking-widest uppercase rounded-sm transition-all duration-300 hover:bg-bloom-ink hover:text-white active:scale-95">
+              <button 
+                onClick={() => addItem(product)}
+                className="w-full py-3 border border-bloom-ink text-bloom-ink text-[11px] font-bold tracking-widest uppercase rounded-sm transition-all duration-300 hover:bg-bloom-ink hover:text-white active:scale-95"
+              >
                 Añadir al Carrito
               </button>
             </div>
