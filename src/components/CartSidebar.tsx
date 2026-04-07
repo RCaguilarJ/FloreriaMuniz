@@ -97,7 +97,7 @@ export default function CartSidebar() {
                   .map((item) => `${item.quantity}x ${item.name} - $${item.price * item.quantity}`)
                   .join('\n');
                 const whatsappMessage = encodeURIComponent(`Hola! Me interesa comprar:\n${message}\n\nTotal: $${total}`);
-                window.open(`https://wa.me/5491140800700?text=${whatsappMessage}`, '_blank');
+                window.open(`https://wa.me/3751111294?text=${whatsappMessage}`, '_blank');
               }}
               className="w-full py-4 bg-bloom-pink text-white font-bold tracking-widest uppercase text-xs rounded-sm transition-all hover:bg-bloom-pink/90 active:scale-95"
             >
