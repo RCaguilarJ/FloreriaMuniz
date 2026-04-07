@@ -63,7 +63,7 @@ const products: Product[] = [
     name: 'Amanecer Rosa',
     description: 'Composición de flores tropicales de colores intensos.',
     price: 70,
-    image: getImageUrl('vertical-selective-focus-shot-red-anthurium-flowers'),
+    image: getImageUrl('bouquet-standing-books'),
     category: 'Arreglos Exóticos'
   },
   // Plantas de Interior
